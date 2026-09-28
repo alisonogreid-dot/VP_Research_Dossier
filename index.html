@@ -1,0 +1,383 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Vanishing Points Starter Packs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0D1117; --surface:#161B22; --surface2:#1C2333; --line:rgba(255,255,255,0.09);
+  --text:#E6EDF3; --muted:#9AA5B1; --teal:#2A9D8F; --sand:#E9C46A; --coral:#E76F51; --ice:#8EC5E8;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Source Sans 3','Segoe UI',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+a{color:var(--teal);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+p{margin:0}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+header.hero{padding-block:56px 8px;display:flex;flex-direction:column;gap:14px}
+header.hero .label{color:var(--teal)}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.05;margin:0;text-wrap:balance}
+h1 em{color:var(--sand);font-style:italic}
+.sub{color:var(--muted);max-width:62ch;font-size:1.05rem}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.6rem,4vw,2.1rem);margin:0;text-wrap:balance}
+h3{font-size:1rem;margin:0}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.rule .label{color:var(--sand)}
+.rule p{color:var(--muted);font-size:.95rem}
+.rule b{color:var(--text)}
+.lock{background:var(--surface2);border:1px solid var(--coral);border-radius:12px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.lock .icon{font-family:var(--mono);color:var(--coral);font-size:1.3rem;line-height:1}
+.lock p{color:var(--muted)}
+.lock b{color:var(--text)}
+nav.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+nav.packs a{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:12px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--text);transition:border-color .2s}
+nav.packs a:hover{border-color:var(--c)}
+nav.packs a .label{color:var(--c)}
+nav.packs a span.t{font-family:var(--serif);font-size:1.3rem;font-weight:700}
+nav.packs a span.b{color:var(--muted);font-size:.9rem}
+section.pack{display:flex;flex-direction:column;gap:18px;scroll-margin-top:16px}
+.pack-top{display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--c);padding-top:18px}
+.pack-top .label{color:var(--c)}
+.pack-intro{color:var(--muted);max-width:66ch}
+.pack-intro b{color:var(--text)}
+.group-title{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.group-title .label{color:var(--c)}
+.group-title p{color:var(--muted);font-size:.92rem}
+.src{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:10px 18px}
+.src .meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.86rem;color:var(--muted)}
+.src .kind{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--surface2);color:var(--c)}
+.src h4{margin:0;font-size:1.12rem;line-height:1.3}
+.src .open{align-self:start;white-space:nowrap;font-weight:600;font-size:.95rem}
+.src .body{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 20px}
+.src .body div{font-size:.95rem;color:var(--muted)}
+.src .body .label{display:block;color:var(--text);font-size:.66rem;margin-bottom:3px}
+.src .think{color:var(--sand)}
+.num{font-family:var(--mono);font-size:.88em;color:var(--text);font-variant-numeric:tabular-nums}
+.dates{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.date{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.date .label{color:var(--teal)}
+.date.now{border-color:var(--sand)}
+.date.now .label{color:var(--sand)}
+.date span{font-size:.95rem}
+footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:520px){.src{grid-template-columns:1fr}.src .open{justify-self:start}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{font-size:.9rem;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--text);background:var(--surface)}
+.toc a:hover{border-color:var(--teal)}
+section.workshop{display:flex;flex-direction:column;gap:22px;scroll-margin-top:16px}
+.ws-top{display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--coral);padding-top:18px}
+.ws-top .label{color:var(--coral)}
+.step{display:flex;flex-direction:column;gap:12px}
+.step-h{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.step-h .n{font-family:var(--mono);font-size:.8rem;color:var(--bg);background:var(--coral);border-radius:999px;padding:2px 10px}
+.step-h h3{font-size:1.2rem}
+.step-h .time{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.muted{color:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.92rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface2);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);font-weight:500}
+td{background:var(--surface)}
+tr:last-child td{border-bottom:none}
+td:last-child,th:last-child{white-space:nowrap}
+td i{color:var(--muted)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.part{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.part.hand{border-color:var(--sand)}
+.part .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.part.hand .tag{color:var(--sand)}
+.part b{font-size:1rem}
+.part span.d{font-size:.9rem;color:var(--muted)}
+.clock{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.tick{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.tick .label{color:var(--teal)}
+.tick.last .label{color:var(--sand)}
+.tick span{font-size:.93rem}
+.example{background:var(--surface2);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font-size:.94rem}
+.example .label{color:var(--teal)}
+.example q{color:var(--text);font-style:italic}
+.pattern{background:var(--surface);border:1px solid var(--teal);border-radius:10px;padding:14px 16px;font-size:1rem}
+.pattern i{color:var(--sand);font-style:italic}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+ul.starters{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:4px;color:var(--text);font-style:italic;font-size:.95rem}
+ul.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.checks li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:flex;gap:10px;align-items:flex-start}
+ul.checks li::before{content:"";width:16px;height:16px;border:2px solid var(--sand);border-radius:4px;flex-shrink:0;margin-top:4px}
+.warnline{border-left:3px solid var(--coral);padding-left:12px;color:var(--muted);font-size:.95rem}
+.warnline b{color:var(--text)}
+</style></head><body>
+
+<div class="wrap">
+<header class="hero">
+  <span class="label">Vanishing Points · MYP4 · Research dossier</span>
+  <h1>Starter <em>packs</em></h1>
+  <p class="sub">Three issues, three biomes, a handful of checked sources each. Your dossier starts here: pick one pack, and your Slot A (Data) source comes from it. Thursday’s workshop instructions are on this page too. Need a biome refresher? Use the <a href="https://claude.ai/artifact/4XU4TcoatRqDhgtc1GGTiK">Biomes reference page</a>.</p>
+</header>
+
+<nav class="toc" aria-label="On this page">
+  <a href="#thursday">Thursday: Research workshop 1</a><a href="#sahel">The Sahel</a><a href="#reefs">Coral reefs</a><a href="#arctic">Glaciers &amp; the Arctic</a><a href="#dates">Checkpoints</a><a href="https://claude.ai/artifact/4XU4TcoatRqDhgtc1GGTiK">Biome refresher ↗</a>
+</nav>
+
+<section style="display:flex;flex-direction:column;gap:14px">
+  <h2>How to use a starter pack</h2>
+  <div class="rules">
+    <div class="rule"><span class="label">Slot A comes from here</span><p>Choose <b>one</b> data source from the "Slot A options" in your pack. It should help answer <b>SQ1</b>: what is happening, and what human activity drives it?</p></div>
+    <div class="rule"><span class="label">Reject one</span><p>Your Slot A page needs <b>one rejected source</b> with a reason. The other Slot A option in your pack is a good candidate.</p></div>
+    <div class="rule"><span class="label">Cite the original</span><p>Open the link and cite <b>that page or report</b> in MLA, not "the starter pack". Record the date you accessed it.</p></div>
+    <div class="rule"><span class="label">Use the rest later</span><p>The other sources can help with your justification (Tuesday), Slots B and C, or background. They are a <b>start</b>, not the whole dossier.</p></div>
+  </div>
+  <div class="lock"><span class="icon">◆</span><p><b>Once you have your research question (Tuesday 3 November), your issue is locked in.</b> You can sharpen the wording, but you can't switch to a different pack. Every slot you fill after that must answer your question.</p></div>
+</section>
+
+<section class="workshop" id="thursday">
+  <div class="ws-top">
+    <span class="label">Thursday 5 November · Research workshop 1</span>
+    <h2>Your dossier plan and Slot A</h2>
+    <p class="pack-intro">Today you plan your whole dossier, then complete your first slot. <b>By the end of the lesson:</b> a drafted dossier plan, and Slot A printed and annotated by hand.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">1</span><h3>Draft your dossier plan</h3><span class="time">20 min · dossier, "My dossier plan"</span></div>
+    <p class="muted">For every slot, write three things: which sub-question it mainly answers, where exactly you will search (a website or organisation, not "Google"), and the target date. Italic rows below are the Sahel worked example; yours uses your own sub-questions.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Slot</th><th>Kind of source</th><th>Answers which SQ?</th><th>Where I will search</th><th>Target date</th></tr></thead>
+      <tbody>
+        <tr><td><b>A</b></td><td>Data</td><td><i>SQ1: what is happening to the land</i></td><td><i>My starter pack: Slot A options</i></td><td>Thu 5 Nov</td></tr>
+        <tr><td><b>B</b></td><td>Official</td><td><i>SQ3: what is being done</i></td><td><i>UN agencies (UNEP, FAO, UNCCD), government ministries, company reports</i></td><td>Thu 19 Nov</td></tr>
+        <tr><td><b>C</b></td><td>News</td><td><i>SQ1 + SQ3</i></td><td><i>NRK, BBC, Reuters, AP, The Guardian: search your place + issue</i></td><td>Thu 19 Nov</td></tr>
+        <tr><td><b>D</b></td><td>Voices</td><td><i>SQ2: who is most affected</i></td><td><i>NGOs and news stories that quote affected people; activists; Indigenous groups</i></td><td>Thu 26 Nov</td></tr>
+      </tbody>
+    </table></div>
+    <p class="warnline"><b>Stuck on "where"?</b> Look at which organisations appear in your starter pack sources, and search those next. You may ask AI where to look for a <i>kind</i> of source (Yellow): save the chat link and note it in your search trail. Letting AI find or choose your sources is Red.</p>
+    <p class="muted">Your plan is a draft today. You rewrite SQ2 on Monday, and the plan is final on <b>Tuesday 10 November</b>. If your plan changes later, log what changed and why in the plan change log.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">2</span><h3>What goes in a slot</h3><span class="time">every slot, every time</span></div>
+    <div class="parts">
+      <div class="part"><span class="tag">Typed</span><b>The extract</b><span class="d">Max 250 words, or one visual (chart, map, satellite image).</span></div>
+      <div class="part"><span class="tag">Typed</span><b>MLA citation</b><span class="d">Who, what, where, when, URL, and the date you accessed it.</span></div>
+      <div class="part"><span class="tag">Typed</span><b>Search trail</b><span class="d">How you found it: what you looked at, what you searched, why you picked it.</span></div>
+      <div class="part"><span class="tag">Typed</span><b>Rejected source</b><span class="d">One source you did not choose, and why not.</span></div>
+      <div class="part hand"><span class="tag">✎ By hand, in class</span><b>Why it earns this slot</b><span class="d">How it helps answer your research question or a sub-question.</span></div>
+      <div class="part hand"><span class="tag">✎ By hand, in class</span><b>Can I trust it?</b><span class="d">Who made it, how they know, and what it can't show.</span></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">3</span><h3>Complete Slot A</h3><span class="time">about 40 min · use these as your clock</span></div>
+    <div class="clock">
+      <div class="tick"><span class="label">By minute 55</span><span><b>Chosen:</b> one source from your pack's Slot A options, pasted into your dossier.</span></div>
+      <div class="tick"><span class="label">By minute 65</span><span><b>Cited:</b> MLA citation, search trail and rejected source typed in.</span></div>
+      <div class="tick"><span class="label">By minute 75</span><span><b>Printed:</b> print your Slot A page, even if something is missing.</span></div>
+      <div class="tick last"><span class="label">Minutes 75–92</span><span><b>Annotated:</b> handwrite both annotations on the printout.</span></div>
+    </div>
+    <div class="two">
+      <div class="example"><span class="label">Example search trail</span><q>I looked at both Slot A options in the Sahel starter pack. I chose the rainfall chart because it shows change over 40 years, which answers SQ1. I then searched "Sahel rainfall drought 1980s" to check the pattern appears in other sources.</q></div>
+      <div class="example"><span class="label">Example rejected source</span><q>I didn't use the IPCC biome diagram for Slot A because it is a projection for the whole of Africa, not measured change in the Sahel. It could be useful background for my justification.</q></div>
+    </div>
+    <p class="warnline"><b>A good rejection names the problem:</b> wrong place · wrong time · not about people · can't tell who made it · repeats another slot.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">4</span><h3>Cite it in MLA</h3></div>
+    <div class="pattern">Organisation or author. "Title of the chart or page." <i>Website name</i>, day Month year published, URL. Accessed day Month year.</div>
+    <div class="two">
+      <p class="muted"><b style="color:var(--text)">No author?</b> Start with the organisation, e.g. NASA. <b style="color:var(--text)">No date?</b> Leave out the published date, but always give the date you accessed it.</p>
+      <p class="muted"><b style="color:var(--text)">A chart inside a report?</b> Cite the report and add the figure or page number. <b style="color:var(--text)">Never cite "the starter pack"</b>: open the link and cite the original.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">5</span><h3>Annotate by hand</h3><span class="time">on the printout, around the visual</span></div>
+    <p class="muted">Use Monday's four questions: What is it? What's the pattern? Why? What's missing? Arrows, circles and numbers from the chart are welcome.</p>
+    <div class="two">
+      <div class="example"><span class="label">Why it earns this slot</span><ul class="starters"><li>This shows … between … and …</li><li>The most important pattern is …</li><li>This helps answer SQ_ because …</li><li>It is stronger than my rejected source because …</li></ul></div>
+      <div class="example"><span class="label">Can I trust it?</span><ul class="starters"><li>It was made by …, who … (why they know)</li><li>It was measured by … (satellite, survey, sensors …)</li><li>However, it does not show …</li><li>To check it, I would also need …</li></ul></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-h"><span class="n">✓</span><h3>Before you leave</h3></div>
+    <ul class="checks">
+      <li>One visual or extract (max 250 words) from my pack's Slot A options</li>
+      <li>MLA citation of the original source, with the date I accessed it</li>
+      <li>Search trail, plus one rejected source with a reason</li>
+      <li>Printed, and annotated by hand: "why it earns this slot" and "can I trust it?"</li>
+      <li>Dossier plan drafted: every slot has a sub-question, a place to search and a date</li>
+    </ul>
+    <p class="muted">Not finished? The typed parts can be finished at home. The handwritten annotations must be done in class: tell your teacher.</p>
+  </div>
+</section>
+
+<nav class="packs" aria-label="Starter packs">
+  <a href="#sahel" style="--c:var(--sand)"><span class="label">Desert ↔ grassland</span><span class="t">The Sahel</span><span class="b">Drought, farming and re-greening on the Sahara's edge</span></a>
+  <a href="#reefs" style="--c:var(--teal)"><span class="label">Aquatic</span><span class="t">Coral reefs</span><span class="b">Warming seas, bleaching and the people who fish the reefs</span></a>
+  <a href="#arctic" style="--c:var(--ice)"><span class="label">Arctic / tundra</span><span class="t">Glaciers &amp; the Arctic</span><span class="b">Melting ice, and what it means for people who live there</span></a>
+</nav>
+
+<!-- SAHEL -->
+<section class="pack" id="sahel" style="--c:var(--sand)">
+  <div class="pack-top">
+    <span class="label">Starter pack 1 · Desert ↔ grassland transition</span>
+    <h2>The Sahel</h2>
+    <p class="pack-intro">The Sahel is the belt of semi-dry land south of the Sahara, stretching across more than ten countries. It is a <b>transition zone</b>: too wet to be desert, too dry to be forest. Small changes in rain, or in how people farm and graze the land, can tip it one way or the other.</p>
+  </div>
+
+  <div class="group-title"><span class="label">Slot A options</span><p>Data that shows change over time. Choose one.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Chart</span><span>Carbon Brief · 27 June 2016</span></div>
+    <h4>Sahel summer rainfall, 1970–2013</h4>
+    <a class="open" href="https://www.carbonbrief.org/sahel-rainfall-recovery-linked-to-warming-mediterranean-study-says">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>A chart of June–September rainfall compared with the long-term average, from the great droughts of the 1970s and 80s to today's partial recovery.</div>
+      <div class="think"><span class="label">Think about</span>Carbon Brief is a climate news site explaining a scientific study. Who made the data, and who made the chart?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Report</span><span>Chris Pye-Smith · World Agroforestry Centre (ICRAF) · 2013</span></div>
+    <h4>The Quiet Revolution: How Niger’s farmers are re-greening the parklands of the Sahel</h4>
+    <a class="open" href="https://www.landscapealliance.org/publications/downloads/Publications/PDFS/BL17569.pdf">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>How farmers in southern Niger brought trees back onto millions of hectares of farmland, with evidence of what changed.</div>
+      <div class="think"><span class="label">Think about</span>This report is from 2013. What might have changed since then? Who carried out the re-greening: governments, charities or farmers?</div>
+    </div>
+  </article>
+
+  <div class="group-title"><span class="label">Other sources in this pack</span><p>For your justification, Slots B–C, or background.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Diagram</span><span>IPCC Sixth Assessment Report, Working Group II, Ch. 9: Africa (2022), p. 1335</span></div>
+    <h4>How aridity and CO₂ shift Africa's biomes</h4>
+    <a class="open" href="https://www.ipcc.ch/report/ar6/wg2/downloads/report/IPCC_AR6_WGII_Chapter09.pdf">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>A diagram of the desert → shrubland → grassland → savanna → forest gradient, and how it could move if Africa gets drier or wetter.</div>
+      <div class="think"><span class="label">Think about</span>This is a projection for the whole continent. Is it showing what has happened, or what might happen?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Official dashboard</span><span>IOM Displacement Tracking Matrix · Dashboard 65, February 2026</span></div>
+    <h4>Central Sahel and Liptako Gourma crisis</h4>
+    <a class="open" href="https://dtm.iom.int/reports/west-and-central-africa-liptako-gourma-and-central-sahel-crisis-dashboard-65-february-2026">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>A map and figures on people forced from their homes: <span class="num">2,748,499</span> internally displaced and <span class="num">732,140</span> refugees across the region.</div>
+      <div class="think"><span class="label">Think about</span>Read the "Context" paragraph. What reasons does it give for people leaving? Can you say the environment <i>caused</i> this?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Organisation website</span><span>The Great Green Wall</span></div>
+    <h4>Great Green Wall: results</h4>
+    <a class="open" href="https://thegreatgreenwall.org/results">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>The project's "successes" country by country, including 5 million hectares restored in Niger and 12 million trees planted in Senegal.</div>
+      <div class="think"><span class="label">Think about</span>When did the Great Green Wall start? When did Niger's farmers start re-greening? Whose success is it?</div>
+    </div>
+  </article>
+</section>
+
+<!-- REEFS -->
+<section class="pack" id="reefs" style="--c:var(--teal)">
+  <div class="pack-top">
+    <span class="label">Starter pack 2 · Aquatic</span>
+    <h2>Coral reefs</h2>
+    <p class="pack-intro">Coral reefs grow in <b>warm, shallow, clear</b> tropical water and hold about a quarter of all ocean species. When the sea gets too hot, corals push out the algae that feed them and turn white: <b>bleaching</b>. Hundreds of millions of people rely on reefs for food, jobs and coastal protection.</p>
+  </div>
+
+  <div class="group-title"><span class="label">Slot A options</span><p>Data that shows change over time. Choose one.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Report with charts</span><span>Global Coral Reef Monitoring Network · 31 August 2026</span></div>
+    <h4>Status of Coral Reefs of the World: 2025</h4>
+    <a class="open" href="https://gcrmn.net/2025-report/">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>Forty years of reef monitoring from 124 countries. Average coral cover fell from <span class="num">30.2%</span> (1980–2009) to <span class="num">27.3%</span> (2020–2024). Regional chapters show your area in more detail.</div>
+      <div class="think"><span class="label">Think about</span>A world average mixes reefs that are fine with reefs that are dying. Would one region tell a clearer story for your question?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Official update</span><span>NOAA (US government) · 2 June 2026</span></div>
+    <h4>The world's fourth mass coral bleaching event has ended</h4>
+    <a class="open" href="https://www.nesdis.noaa.gov/news/worlds-fourth-mass-coral-bleaching-event-likely-ended-2025">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>Satellite data showing <span class="num">84%</span> of the world's reef area hit by bleaching-level heat between 2023 and 2025, in <span class="num">83</span> countries and territories.</div>
+      <div class="think"><span class="label">Think about</span>Is "hit by heat stress" the same as "died"? What does this source not tell you?</div>
+    </div>
+  </article>
+
+  <div class="group-title"><span class="label">Other sources in this pack</span><p>For your justification, Slots B–C, or background.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Infographic</span><span>FAO, <i>The State of World Fisheries and Aquaculture</i> 2024</span></div>
+    <h4>Employment in fisheries, 2022</h4>
+    <a class="open" href="https://www.fao.org/science-technology-and-innovation/resources/publications/the-state-of-world-fisheries-and-aquaculture-2024/">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span><span class="num">62 million</span> people work in fishing and fish farming. Small-scale fishers have <span class="num">90%</span> of the fishing jobs but land only <span class="num">40%</span> of the catch.</div>
+      <div class="think"><span class="label">Think about</span>This covers all fisheries, not only reefs. How would you connect it to your reef question, and to who is most affected (SQ2)?</div>
+    </div>
+  </article>
+</section>
+
+<!-- ARCTIC -->
+<section class="pack" id="arctic" style="--c:var(--ice)">
+  <div class="pack-top">
+    <span class="label">Starter pack 3 · Arctic / tundra</span>
+    <h2>Glaciers &amp; the Arctic</h2>
+    <p class="pack-intro">The Arctic is warming several times faster than the rest of the planet. Sea ice is shrinking, glaciers are losing mass, and <b>tundra</b> (the cold, treeless land with frozen ground beneath) is changing. That includes northern Norway, where Sámi reindeer herders depend on it.</p>
+  </div>
+
+  <div class="group-title"><span class="label">Slot A options</span><p>Data that shows change over time. Choose one.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Chart</span><span>NASA Earth Indicators</span></div>
+    <h4>Arctic sea ice minimum extent</h4>
+    <a class="open" href="https://science.nasa.gov/earth/explore/earth-indicators/arctic-sea-ice-minimum-extent/">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>How much sea ice is left each September since satellite records began in 1979. It is shrinking by about <span class="num">12.2%</span> per decade.</div>
+      <div class="think"><span class="label">Think about</span>Sea ice, glaciers and tundra are different things. Which one is your question about?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Chart</span><span>Copernicus Climate Change Service, using World Glacier Monitoring Service data</span></div>
+    <h4>Global glacier mass change, 1976–2025</h4>
+    <a class="open" href="https://climate.copernicus.eu/climate-indicators/glaciers">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>How much ice the world's glaciers have lost: about <span class="num">9,580</span> gigatonnes since 1975, <span class="num">7,500</span> of them since 2000.</div>
+      <div class="think"><span class="label">Think about</span>A gigatonne is a billion tonnes. What does "since 2000" tell you about the speed of change?</div>
+    </div>
+  </article>
+
+  <div class="group-title"><span class="label">Other sources in this pack</span><p>For your justification, Slots B–C, or background.</p></div>
+  <article class="src">
+    <div class="meta"><span class="kind">Official report</span><span>Norwegian National Human Rights Institution (NIM) · 1 February 2024</span></div>
+    <h4>Effects of climate change for the Sámi people</h4>
+    <a class="open" href="https://www.nhri.no/en/report/canary-in-the-coal-mine/6-effects-of-climate-change-for-the-sami-people/">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>How rain falling on snow freezes into ice that reindeer can't dig through, and how often that now happens compared with the past.</div>
+      <div class="think"><span class="label">Think about</span>This is a human rights organisation. Why might it have written this report, and who is it written for?</div>
+    </div>
+  </article>
+  <article class="src">
+    <div class="meta"><span class="kind">Press release</span><span>ETH Zurich · May 2025 · about a study in <i>Science</i></span></div>
+    <h4>Save twice the ice by limiting global warming</h4>
+    <a class="open" href="https://ethz.ch/en/news-and-events/eth-news/news/2025/05/save-twice-the-ice-by-limiting-global-warming.html">Open ↗</a>
+    <div class="body">
+      <div><span class="label">You'll find</span>If warming stops at 1.5°C, about <span class="num">54%</span> of today's glacier ice survives. On today's path (2.7°C), only <span class="num">24%</span> does.</div>
+      <div class="think"><span class="label">Think about</span>This is a prediction, not a measurement. What decisions would decide which future happens (SQ3)?</div>
+    </div>
+  </article>
+</section>
+
+<section id="dates" style="display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px">
+  <h2>Your checkpoints</h2>
+  <div class="dates">
+    <div class="date"><span class="label">Tue 3 Nov</span><span>Research question, lens and justification</span></div>
+    <div class="date now"><span class="label">Thu 5 Nov</span><span>Slot A: Data, from your starter pack</span></div>
+    <div class="date"><span class="label">Tue 10 Nov</span><span>Dossier plan final</span></div>
+    <div class="date"><span class="label">Thu 19 Nov</span><span>Slots B + C: Official, News</span></div>
+    <div class="date"><span class="label">Thu 26 Nov</span><span>Slot D: Voices (full draft dossier)</span></div>
+    <div class="date"><span class="label">Thu 10 Dec</span><span>The paper: op-ed + reflection</span></div>
+  </div>
+</section>
+
+<footer>Links checked September 2026. If a link stops working, tell your teacher and record it in your search trail.</footer>
+</div>
+</body></html>
